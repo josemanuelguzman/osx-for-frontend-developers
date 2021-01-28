@@ -1,10 +1,10 @@
-# OSX for Front-end developers <!-- omit in toc -->
+# OS X for Front-end developers <!-- omit in toc -->
 
-As a Frond-end developers 🤓 we can build basic websites with nothing more than a text editor and browser, but we want to up our game by adding a JavaScript framework like React or Vue and useful tools like Git to our workflow.
+As Front-end developers 🤓 we can build basic websites with nothing more than a text editor and a browser, but we want to up our game by adding a JavaScript framework like React or Vue and useful tools like Git to our workflow.
 
-But wait! Our Mac isn’t ready. Before diving in, we’ll need to install a few items to that will save we from confusing errors later. 😩
+But wait! Our Mac isn’t ready. Before diving in, we’ll need to install a few items that will save we from confusing errors later. 😩
 
-This is the minimum (IMO) setup we'll need to get up and running on our Mac and a checklist to set up our ✨ OS X for front-end development.
+This is the minimum (IMO) setup we'll need to get up and run on our Mac and a checklist to set up our ✨ OS X for front-end development.
 
 🚀 Let’s go!
 
@@ -197,7 +197,7 @@ xcode-select --install
 
 Instead of installing the next few tools by going to each tool's website, finding the download page, clicking the download link, unzipping the files, and manually running the installer, we’re going to use [Homebrew](https://brew.sh/) 😍.
 
-Homebrew is a tool that lets we install, update and uninstall software on our Mac from the command line. This is faster and safer than the manual approach and generally makes your development life easier.
+Homebrew is a tool that lets us install, update and uninstall software on our Mac from the command line. This is faster and safer than the manual approach and generally makes your development life easier.
 
 Install Homebrew with:
 ```bash
@@ -240,7 +240,7 @@ brew install docker-compose
 ```bash
 brew install elasticsearch
 ```
-To have launchd start elasticsearch and restart at login:
+To have it launched start elasticsearch and restart at login:
 
 ```bash
 brew services start elasticsearch
@@ -339,7 +339,7 @@ brew tap mongodb/brew
 brew install mongodb-community@4.2
 ```
 
-To have launched start mongodb/brew/mongodb-community and restart at login:
+To have it launched start mongodb/brew/mongodb-community and restart at login:
 
 ```bash
 brew services start mongodb/brew/mongodb-community
@@ -350,7 +350,7 @@ brew services start mongodb/brew/mongodb-community
 ```bash
 brew install mysql
 ```
-To have launchd start mysql and restart at login:
+To have it launched start mysql and restart at login:
 
 ```bash
 brew services start mysql
@@ -412,7 +412,7 @@ brew install perl
 ```bash
 brew install postgresql
 ```
-To have launchd start postgresql and restart at login:
+To have it launched start postgresql and restart at login:
 
 ```bash
 brew services start postgresql
@@ -435,7 +435,7 @@ brew install rainbarf
 ```bash
 brew install redis
 ```
-To have launchd start redis and restart at login:
+To have it launched start redis and restart at login:
 
 ```bash
 brew services start redis
