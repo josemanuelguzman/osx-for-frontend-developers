@@ -238,7 +238,10 @@ brew install docker-compose
 ### Elasticsearch
 
 ```bash
-brew install elasticsearch
+# tap the Elastic Homebrew repository
+brew tap elastic/tap
+# install the default distribution of Elasticsearch
+brew install elastic/tap/elasticsearch-full
 ```
 To have it launched start elasticsearch and restart at login:
 
