@@ -56,6 +56,7 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
   - [Redis](#redis)
   - [Ruby](#ruby)
   - [RVM](#rvm)
+  - [SASS](#sass)
   - [Tmux](#tmux)
   - [Tmuxinator](#tmuxinator)
   - [TOR](#tor)
@@ -462,6 +463,12 @@ gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D69
 Install RVM with default Ruby:
 ```bash
 \curl -sSL https://get.rvm.io | bash -s stable
+```
+
+### SASS
+
+```bash
+brew install sass/sass/sass
 ```
 
 ### Tmux
