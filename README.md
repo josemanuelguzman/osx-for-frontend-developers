@@ -35,6 +35,7 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
     - [Font Jetbrains Mono](#font-jetbrains-mono)
     - [Font Fira Code](#font-fira-code)
   - [Git](#git)
+  - [Git flow](#git-flow)
   - [Google Chrome](#google-chrome)
   - [GnuPG](#gnupg)
   - [GNU sed](#gnu-sed)
@@ -288,6 +289,12 @@ brew install --cask font-fira-code
 brew install git
 # GitHub wrapper
 brew install gh
+```
+
+### Git flow
+
+```bash
+brew install git-flow
 ```
 
 ### Google Chrome
