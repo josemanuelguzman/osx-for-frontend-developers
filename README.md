@@ -25,7 +25,6 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
 - [🍺 Homebrew](#-homebrew)
 - [⬛ Choose a Terminal App](#-choose-a-terminal-app)
 - [👨🏻‍💻 Dev apps](#-dev-apps)
-  - [Atom](#atom)
   - [Curl](#curl)
   - [Docker](#docker)
   - [Elasticsearch](#elasticsearch)
@@ -217,12 +216,6 @@ Any of the following are good options:
 - Terminal (the default app that comes with our Mac's)
 
 ## 👨🏻‍💻 Dev apps
-
-### Atom
-
-```bash
-brew install --cask atom
-```
 
 ### Curl
 
