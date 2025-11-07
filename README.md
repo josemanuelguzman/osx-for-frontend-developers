@@ -30,6 +30,7 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
   - [Elasticsearch](#elasticsearch)
   - [Findutils](#findutils)
   - [Firefox](#firefox)
+  - [Arc](#arc)
   - [Fonts](#fonts)
     - [Font Jetbrains Mono](#font-jetbrains-mono)
     - [Font Fira Code](#font-fira-code)
@@ -42,12 +43,20 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
   - [Grep](#grep)
   - [Imagemagick](#imagemagick)
   - [iTerm2](#iterm2)
+  - [Warp](#warp)
   - [Java Runtime](#java-runtime)
   - [MongoDB](#mongodb)
   - [MySQL](#mysql)
   - [Ngrok](#ngrok)
   - [Nodejs](#nodejs)
   - [NVM](#nvm)
+  - [Bun](#bun)
+  - [pnpm](#pnpm)
+  - [Vite](#vite)
+  - [esbuild](#esbuild)
+  - [TypeScript](#typescript)
+  - [Vitest](#vitest)
+  - [Playwright](#playwright)
   - [oh-my-zsh](#oh-my-zsh)
   - [Perl](#perl)
   - [Postgresql](#postgresql)
@@ -57,11 +66,16 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
   - [Ruby](#ruby)
   - [RVM](#rvm)
   - [SASS](#sass)
+  - [Tailwind CSS](#tailwind-css)
+  - [PostCSS](#postcss)
+  - [Turborepo](#turborepo)
+  - [Nx](#nx)
   - [Tmux](#tmux)
   - [Tmuxinator](#tmuxinator)
   - [TOR](#tor)
   - [PHP](#php)
   - [Postman](#postman)
+  - [Bruno](#bruno)
   - [SourceTree](#sourcetree)
   - [Vagrant](#vagrant)
     - [Keep VirtualBox Guest Additions updated](#keep-virtualbox-guest-additions-updated)
@@ -211,6 +225,7 @@ Since you'll be interacting with your Mac using the command line in this article
 
 Any of the following are good options:
 
+- [Warp](https://warp.dev) - Modern, AI-powered terminal with IDE-like features (Recommended for 2025)
 - [iTerm2](https://iterm2.com)
 - [Hyper](https://hyper.is)
 - Terminal (the default app that comes with our Mac's)
@@ -255,6 +270,16 @@ brew install findutils
 ```bash
 brew install --cask firefox
 ```
+
+### Arc
+
+Arc is a modern browser built for productivity with features like spaces, split view, and a command bar. It's becoming increasingly popular among developers and designers.
+
+```bash
+brew install --cask arc
+```
+
+Arc reimagines how browsers should work with features like automatic tab organization, built-in note-taking, and seamless workspace switching.
 
 ### Fonts
 
@@ -332,6 +357,16 @@ brew install imagemagick --disable-openmp --build-from-source
 brew install --cask iterm2
 ```
 
+### Warp
+
+Warp is a modern, Rust-based terminal with AI-powered features, command palette, and IDE-like capabilities. It's the next generation of terminal apps.
+
+```bash
+brew install --cask warp
+```
+
+Warp includes features like AI command search, shareable workflows, and intelligent autocomplete, making it an excellent choice for modern development.
+
 ### Java Runtime
 
 Follow [https://support.apple.com/HT204036](https://support.apple.com/HT204036)
@@ -398,6 +433,121 @@ Set default
 ````bash
 nvm use node
 ````
+
+### Bun
+
+Bun is an incredibly fast all-in-one JavaScript runtime and toolkit designed to replace Node.js. It includes a native bundler, test runner, and npm-compatible package manager.
+
+```bash
+brew tap oven-sh/bun
+brew install bun
+```
+
+Or using the official installer:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+Bun is significantly faster than Node.js for many operations and is becoming increasingly popular for modern frontend development.
+
+### pnpm
+
+pnpm is a fast, disk space efficient package manager that's becoming the preferred choice for many modern projects and monorepos.
+
+```bash
+brew install pnpm
+```
+
+Or using npm:
+
+```bash
+npm install -g pnpm
+```
+
+pnpm creates a non-flat node_modules structure that saves disk space and resolves dependency issues that npm and yarn sometimes face.
+
+### Vite
+
+Vite is a next-generation frontend build tool that provides an extremely fast dev server and optimized builds. It's become the go-to choice for modern React, Vue, and Svelte projects.
+
+```bash
+npm install -g vite
+# or with pnpm
+pnpm install -g vite
+```
+
+You can also create projects directly:
+
+```bash
+npm create vite@latest
+# or
+pnpm create vite
+```
+
+Vite's speed comes from using native ES modules during development and esbuild for pre-bundling dependencies.
+
+### esbuild
+
+esbuild is an extremely fast JavaScript bundler and minifier written in Go. It's used under the hood by Vite and other modern tools.
+
+```bash
+npm install -g esbuild
+# or with pnpm
+pnpm install -g esbuild
+```
+
+esbuild can be 10-100x faster than traditional bundlers like Webpack, making it ideal for modern development workflows.
+
+### TypeScript
+
+TypeScript has become the de facto standard for modern frontend development. It adds static typing to JavaScript, catching errors early and improving code quality.
+
+```bash
+npm install -g typescript
+# or with pnpm
+pnpm install -g typescript
+```
+
+You can also install tsx for running TypeScript files directly:
+
+```bash
+npm install -g tsx
+# or with pnpm
+pnpm install -g tsx
+```
+
+TypeScript is now used by default in most modern frameworks and is essential for large-scale frontend applications.
+
+### Vitest
+
+Vitest is a blazing-fast unit test framework powered by Vite. It's become the preferred testing solution for modern frontend projects.
+
+```bash
+npm install -g vitest
+# or with pnpm
+pnpm install -g vitest
+```
+
+Vitest provides a Jest-compatible API with better performance and native ESM support, making it ideal for Vite-based projects.
+
+### Playwright
+
+Playwright is a modern end-to-end testing framework that supports all major browsers. It's become the industry standard for reliable E2E testing.
+
+```bash
+npm install -g @playwright/test
+# or with pnpm
+pnpm install -g @playwright/test
+```
+
+After installation, initialize Playwright:
+
+```bash
+npm init playwright@latest
+```
+
+Playwright offers better reliability, faster execution, and more features compared to alternatives like Selenium or Puppeteer.
 
 ### oh-my-zsh
 
@@ -471,6 +621,72 @@ Install RVM with default Ruby:
 brew install sass/sass/sass
 ```
 
+### Tailwind CSS
+
+Tailwind CSS is a utility-first CSS framework that has become the dominant choice for styling modern web applications. It provides a comprehensive set of utility classes for rapid UI development.
+
+```bash
+npm install -g tailwindcss
+# or with pnpm
+pnpm install -g tailwindcss
+```
+
+Initialize Tailwind in your project:
+
+```bash
+npx tailwindcss init
+```
+
+Tailwind's utility-first approach eliminates the need to write custom CSS while maintaining flexibility and enabling rapid prototyping.
+
+### PostCSS
+
+PostCSS is a tool for transforming CSS with JavaScript plugins. It's essential for modern CSS workflows and is used by Tailwind CSS and many other tools.
+
+```bash
+npm install -g postcss postcss-cli
+# or with pnpm
+pnpm install -g postcss postcss-cli
+```
+
+PostCSS enables features like autoprefixing, nesting, and modern CSS transformations, making it a fundamental part of the modern frontend stack.
+
+### Turborepo
+
+Turborepo is a high-performance build system for JavaScript and TypeScript monorepos. It's become the go-to choice for managing multiple packages in a single repository.
+
+```bash
+npm install -g turbo
+# or with pnpm
+pnpm install -g turbo
+```
+
+Create a new Turborepo:
+
+```bash
+npx create-turbo@latest
+```
+
+Turborepo provides intelligent caching and parallel execution, making monorepo builds significantly faster than traditional approaches.
+
+### Nx
+
+Nx is a powerful build system with first-class monorepo support and integrated tooling. It's widely used for large-scale enterprise applications.
+
+```bash
+npm install -g nx
+# or with pnpm
+pnpm install -g nx
+```
+
+Create a new Nx workspace:
+
+```bash
+npx create-nx-workspace@latest
+```
+
+Nx provides advanced features like computation caching, distributed task execution, and smart rebuilds, making it ideal for large teams.
+
 ### Tmux
 
 ```bash
@@ -501,6 +717,16 @@ brew install php
 ```bash
 brew install --cask postman
 ```
+
+### Bruno
+
+Bruno is a fast, open-source API client that stores collections directly in your filesystem. It's a privacy-focused alternative to Postman.
+
+```bash
+brew install --cask bruno
+```
+
+Bruno stores your API collections in plain text files (Bru format) making them easy to version control with Git. It's ideal for teams who want to track API changes alongside their code.
 
 ### SourceTree
 
@@ -557,7 +783,7 @@ brew install zsh
 ### Figma
 
 ```bash
-brew install --cask sigma
+brew install --cask figma
 ```
 
 ### Sketch
