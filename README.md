@@ -21,12 +21,14 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
   - [Prevent Time Machine from Prompting to Use New Hard Drives as Backup Volume](#prevent-time-machine-from-prompting-to-use-new-hard-drives-as-backup-volume)
   - [Show All File Extensions](#show-all-file-extensions)
   - [Disable Creation of DS_Store Files on Network Volumes and USB Drives](#disable-creation-of-ds_store-files-on-network-volumes-and-usb-drives)
+  - [Additional Performance Tweaks](#additional-performance-tweaks)
 - [🛠️ Command Line Developer Tools](#️-command-line-developer-tools)
 - [🍺 Homebrew](#-homebrew)
 - [⬛ Choose a Terminal App](#-choose-a-terminal-app)
 - [👨🏻‍💻 Dev apps](#-dev-apps)
   - [Curl](#curl)
   - [Docker](#docker)
+  - [Colima](#colima)
   - [Elasticsearch](#elasticsearch)
   - [Findutils](#findutils)
   - [Firefox](#firefox)
@@ -50,6 +52,7 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
   - [Ngrok](#ngrok)
   - [Nodejs](#nodejs)
   - [NVM](#nvm)
+  - [fnm](#fnm)
   - [Bun](#bun)
   - [pnpm](#pnpm)
   - [Vite](#vite)
@@ -81,14 +84,18 @@ This is the minimum (IMO) setup we'll need to get up and run on our Mac and a ch
     - [Keep VirtualBox Guest Additions updated](#keep-virtualbox-guest-additions-updated)
   - [VirtualBox](#virtualbox)
   - [Visual Studio Code](#visual-studio-code)
+  - [Cursor](#cursor)
   - [X11](#x11)
   - [Yarn](#yarn)
   - [ZSH](#zsh)
+  - [GitHub Copilot CLI](#github-copilot-cli)
+  - [Claude CLI](#claude-cli)
 - [👨🏻‍🎨 Designer apps](#-designer-apps)
   - [Figma](#figma)
   - [Sketch](#sketch)
   - [InVision](#invision)
 - [🧰 Really useful apps](#-really-useful-apps)
+  - [Stats](#stats)
   - [Dropbox](#dropbox)
   - [Google Drive](#google-drive)
   - [Harvest](#harvest)
@@ -186,6 +193,42 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 ```
 
+### Additional Performance Tweaks
+
+These tweaks improve the developer experience by optimizing keyboard behavior, file watching, and system performance.
+
+```bash
+# Faster key repeat rate (useful for vim/code navigation)
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# Disable press-and-hold for keys (enables key repeat)
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Show hidden files by default in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Faster Dock animation
+defaults write com.apple.dock autohide-time-modifier -float 0.5
+
+# Disable auto-correct (helpful when typing code)
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Save screenshots to dedicated folder
+mkdir -p ~/Screenshots
+defaults write com.apple.screencapture location ~/Screenshots
+
+# Save screenshots as JPG (smaller file size)
+defaults write com.apple.screencapture type jpg
+
+# Increase file watcher limit (essential for Vite, Webpack, and other dev tools)
+echo kern.maxfiles=65536 | sudo tee -a /etc/sysctl.conf
+echo kern.maxfilesperproc=65536 | sudo tee -a /etc/sysctl.conf
+
+# Restart affected apps to apply changes
+killall Finder Dock SystemUIServer
+```
+
 ## 🛠️ Command Line Developer Tools
 
 The first thing we'll need to install from the command line are our Mac's **command line developer tools**. Installing these now will prevent weird errors later.
@@ -243,6 +286,28 @@ brew install curl
 ```bash
 brew install boot2docker
 brew install docker-compose
+```
+
+### Colima
+
+Colima is a lightweight, fast alternative to Docker Desktop for macOS. It provides container runtimes with minimal resource usage and is completely free.
+
+```bash
+brew install colima
+```
+
+Start Colima:
+
+```bash
+colima start
+```
+
+Colima is compatible with Docker CLI and docker-compose, making it a drop-in replacement for Docker Desktop. It's faster, uses less memory, and doesn't require a license for commercial use.
+
+For Kubernetes support:
+
+```bash
+colima start --kubernetes
 ```
 
 ### Elasticsearch
@@ -433,6 +498,30 @@ Set default
 ````bash
 nvm use node
 ````
+
+### fnm
+
+fnm (Fast Node Manager) is a fast and simple Node.js version manager built in Rust. It's significantly faster than nvm, especially on shell startup.
+
+```bash
+brew install fnm
+```
+
+Add fnm to your shell (for zsh):
+
+```bash
+eval "$(fnm env --use-on-cd)"
+```
+
+Install and use Node:
+
+```bash
+fnm install --lts
+fnm use lts-latest
+fnm default lts-latest
+```
+
+fnm automatically switches Node versions based on `.node-version` or `.nvmrc` files in your projects, making it ideal for working with multiple projects.
 
 ### Bun
 
@@ -760,6 +849,22 @@ brew install --cask virtualbox
 brew install --cask visual-studio-code
 ```
 
+### Cursor
+
+Cursor is an AI-powered code editor built on VSCode. It features advanced AI assistance, natural language code editing, and intelligent code generation.
+
+```bash
+brew install --cask cursor
+```
+
+Cursor combines the familiar VSCode interface with powerful AI capabilities including:
+- Chat with your codebase
+- AI-powered code completion
+- Natural language to code conversion
+- Code refactoring and debugging assistance
+
+It's becoming the preferred IDE for developers who want to leverage AI in their workflow.
+
 ### X11
 
 ```bash
@@ -777,6 +882,48 @@ brew install yarn
 ```bash
 brew install zsh
 ```
+
+### GitHub Copilot CLI
+
+GitHub Copilot CLI brings AI-powered command suggestions directly to your terminal. It helps you find the right command, understand what it does, and safely execute it.
+
+```bash
+gh extension install github/gh-copilot
+```
+
+Note: Requires GitHub CLI (`gh`) and an active GitHub Copilot subscription.
+
+Usage:
+
+```bash
+gh copilot suggest "install packages with pnpm"
+gh copilot explain "git rebase -i HEAD~3"
+```
+
+### Claude CLI
+
+Claude CLI provides terminal access to Anthropic's Claude AI. It's useful for getting coding help, debugging, and code review directly from your command line.
+
+Install via npm:
+
+```bash
+npm install -g @anthropic-ai/claude-cli
+```
+
+Or with Homebrew:
+
+```bash
+brew install anthropic/claude/claude
+```
+
+Usage:
+
+```bash
+claude "explain this function" < myfile.js
+claude chat  # Start an interactive session
+```
+
+Note: Requires an Anthropic API key.
 
 ## 👨🏻‍🎨 Designer apps
 
@@ -806,6 +953,23 @@ brew install --cask invisionsync
 ```
 
 ## 🧰 Really useful apps
+
+### Stats
+
+Stats is a free, open-source macOS system monitor that lives in your menu bar. It shows CPU, memory, disk, network, and battery usage in real-time.
+
+```bash
+brew install --cask stats
+```
+
+Stats provides a lightweight alternative to paid apps like iStat Menus, with customizable widgets showing:
+- CPU usage and temperature
+- Memory usage
+- Disk activity and space
+- Network bandwidth
+- Battery health and usage
+
+Essential for developers who want to monitor system resources while running multiple development tools.
 
 ### Dropbox
 
